@@ -12,6 +12,8 @@ import org.springframework.stereotype.Component
 @Component
 class SealandScraper (private val driver: ChromeDriver) : Scraper {
 
+    private val wait = WebDriverWait(driver, 10)
+
     companion object {
         private val carrierCode = "SEALAND"
         private val consentCookie = "CookieInformationConsent"
@@ -32,8 +34,6 @@ class SealandScraper (private val driver: ChromeDriver) : Scraper {
         maxAttempts = 3
     )
     override fun findEta(containerNumber: String): String {
-        val wait = WebDriverWait(driver, 10)
-
         driver.navigate().to("https://www.sealandmaersk.com/")
 
         if (driver.manage().getCookieNamed(consentCookie) == null) {
