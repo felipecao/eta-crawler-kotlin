@@ -49,7 +49,7 @@ class Main(
         }
         catch (e: Exception) {
             logger.error("Error while trying to find ETA: ${e.message}", e)
-            fileLogger.logEta(carrier, containerNumber, "retry")
+            fileLogger.logEta(carrier, containerNumber, "Not Found")
         }
     }
 }

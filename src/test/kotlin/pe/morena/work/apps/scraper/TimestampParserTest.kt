@@ -6,11 +6,20 @@ import org.junit.jupiter.api.Test
 class TimestampParserTest {
 
     @Test
-    fun `timestamp conversion works properly`() {
+    fun `timestamp conversion works for CMA`() {
         val raw = "Mon 20 Dec 2021 02:00"
         val originalPattern = "eee dd MMM yyyy HH:mm"
         val destinationPattern = "dd.MM.yy"
 
         assertThat(TimestampParser.parseDate(raw, originalPattern, destinationPattern)).isEqualTo("20.12.21")
+    }
+
+    @Test
+    fun `timestamp conversion works for Sealand`() {
+        val raw = "14 Jan 2022 00:00"
+        val originalPattern = "dd MMM yyyy HH:mm"
+        val destinationPattern = "dd.MM.yy"
+
+        assertThat(TimestampParser.parseDate(raw, originalPattern, destinationPattern)).isEqualTo("14.01.22")
     }
 }
