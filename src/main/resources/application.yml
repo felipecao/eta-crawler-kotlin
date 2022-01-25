@@ -1,0 +1,5 @@
+app:
+  slack:
+    protocol: https
+    host: hooks.slack.com
+    port: 443

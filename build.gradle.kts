@@ -13,6 +13,9 @@ java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
+	maven {
+		url = uri("https://jcenter.bintray.com/")
+	}
 }
 
 dependencies {
@@ -22,6 +25,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.retry:spring-retry:1.3.1")
 	implementation("org.springframework:spring-aspects:5.2.19.RELEASE")
+	implementation("khttp:khttp:1.0.0")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
