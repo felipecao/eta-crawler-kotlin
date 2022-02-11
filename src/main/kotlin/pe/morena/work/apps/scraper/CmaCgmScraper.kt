@@ -19,7 +19,7 @@ class CmaCgmScraper(private val driver: ChromeDriver) : Scraper {
         private val carrierCode = "CMA-CGM"
         private val reference = By.id("Reference")
         private val btnTracking = By.id("btnTracking")
-        private val eta = By.xpath("//table/tbody/tr[last()]/td[1]")
+        private val eta = By.xpath("//table/tbody/tr[last()]/td[1]/div/span[1]")
     }
 
     @Retryable(
@@ -46,7 +46,7 @@ class CmaCgmScraper(private val driver: ChromeDriver) : Scraper {
     }
 
     private fun parseEta(rawEta: String) =
-        TimestampParser.parseDate(rawEta, "eee dd MMM yyyy HH:mm", "dd.MM.yy")
+        TimestampParser.parseDate("$rawEta 00:00", "eeee, dd-MMM-yyyy HH:mm", "dd.MM.yy")
 
     override fun scrapesFor(carrier: String) = carrier.trim().equals(carrierCode, true)
 }
