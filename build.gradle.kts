@@ -25,6 +25,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.retry:spring-retry:1.3.1")
 	implementation("org.springframework:spring-aspects:5.2.19.RELEASE")
+	implementation("org.springframework.boot:spring-boot-starter-mail")
 	implementation("khttp:khttp:1.0.0")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")

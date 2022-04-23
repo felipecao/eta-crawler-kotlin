@@ -4,6 +4,8 @@ import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
+import pe.morena.work.apps.email.Email
+import pe.morena.work.apps.email.EmailService
 import pe.morena.work.apps.scraper.Scraper
 import pe.morena.work.apps.slack.SlackConnection
 import pe.morena.work.apps.slack.SlackMessage
@@ -15,6 +17,7 @@ class Main(
     private val slackConnection: SlackConnection,
     private val csvReader: CsvReader,
     private val scrapers: List<Scraper>,
+    private val emailService: EmailService,
 ) : CommandLineRunner {
 
     companion object {
@@ -45,11 +48,10 @@ class Main(
             }
         }
 
-        logger.info("Finished fetching all containers")
+        emailService.sendEmail(Email(contents = OutputFile.read()))
+        slackConnection.sendMessage(SlackMessage("All steps concluded, terminating execution"))
 
-        slackConnection.sendMessage(SlackMessage(OutputFile.read()))
-        logger.info("Slack notification has been sent, terminating execution")
-
+        logger.info("Finished fetching all containers and sending notifications")
         System.exit(0)
     }
 
