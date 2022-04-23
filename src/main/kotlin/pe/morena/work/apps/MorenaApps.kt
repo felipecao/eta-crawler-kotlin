@@ -10,6 +10,6 @@ import java.nio.file.Paths
 class MorenaApps
 
 fun main(args: Array<String>) {
-	System.setProperty("webdriver.chrome.driver", Paths.get(".").toAbsolutePath().normalize().toString() + "/chromedriver/99.0.4844.51/chromedriver")
+	System.setProperty("webdriver.chrome.driver", Paths.get(".").toAbsolutePath().normalize().toString() + "/chromedriver/100.0.4896.60/chromedriver")
 	runApplication<MorenaApps>(*args)
 }
